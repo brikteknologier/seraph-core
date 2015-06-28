@@ -5,12 +5,14 @@ function SeraphCore(config) {
   if (typeof options === 'string') {
     options = { server: options };
   };
-  this.options = _.extend({}, defaultOptions, options);
-  this.options.server = this.options.server
+  options = _.extend({}, defaultOptions, options);
+  options.server = options.server
     .replace(/\/$/, '');        // remove trailing /
-  this.options.endpoint = this.options.endpoint
+  options.endpoint = options.endpoint
     .replace(/\/$/, '')         // remove trailing /
     .replace(/^([^\/])/, '/$1'); // add leading /
+
+  this.options = options;
 }
 
 var defaultOptions = {
