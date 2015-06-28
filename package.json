@@ -1,0 +1,19 @@
+{
+  "name": "seraph-core",
+  "version": "1.0.0",
+  "description": "core functions for a neo4j connector",
+  "main": "seraph-core.js",
+  "scripts": {
+    "test": "mocha -R spec -t 300000 -b"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/brikteknologier/seraph-core"
+  },
+  "author": "Jon Packer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brikteknologier/seraph-core/issues"
+  },
+  "homepage": "https://github.com/brikteknologier/seraph-core"
+}
