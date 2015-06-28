@@ -148,13 +148,12 @@ function SeraphCore(config) {
     var op = {
       method: 'POST',
       endpoint: '/user',
-      to: this.options.user + '/password',
+      to: options.user + '/password',
       body: { password: newPassword }
     };
-    var self = this;
-    this.call(op, function(err, result) {
+    self.call(op, function(err, result) {
       if (err) return callback(err);
-      self.options.pass = newPassword;
+      options.pass = newPassword;
       callback();
     });
   };
