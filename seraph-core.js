@@ -66,7 +66,7 @@ function SeraphCore(config) {
    *
    * seraph#call(operation, callback);
    */
-  SeraphCore.prototype.call = function(operation, callback) {
+  this.call = function(operation, callback) {
     // Ensure callback is callable. Throw instead of calling back if none.
     if (typeof callback !== 'function') {
       callback = function(err) {
@@ -142,6 +142,22 @@ function SeraphCore(config) {
     });
   };
 
+
+  // change password
+  this.changePassword = function(newPassword, callback) {
+    var op = {
+      method: 'POST',
+      endpoint: '/user',
+      to: this.options.user + '/password',
+      body: { password: newPassword }
+    };
+    var self = this;
+    this.call(op, function(err, result) {
+      if (err) return callback(err);
+      self.options.pass = newPassword;
+      callback();
+    });
+  };
 }
 
 var defaultOptions = {
