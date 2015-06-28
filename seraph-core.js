@@ -1,3 +1,6 @@
+var request = require('request');
+var _ = require('underscore');
+
 function SeraphCore(config) {
   if (typeof options === 'string') {
     options = { server: options };
