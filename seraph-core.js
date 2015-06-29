@@ -1,7 +1,7 @@
 var request = require('request');
 var _ = require('underscore');
 
-function SeraphCore(config) {
+function SeraphCore(options) {
   if (typeof options === 'string') {
     options = { server: options };
   };
@@ -86,6 +86,8 @@ function SeraphCore(config) {
     
 
     if (operation.body) requestOpts.json = operation.body;
+
+    callback = callback.bind(this);
     
     // allow mocking of "request". you can mock it by reassigning this._request to
     // something with the same API as the "request" module.
@@ -174,3 +176,4 @@ var defaultOptions = {
   pass: 'neo4j'
 }, optionKeys = Object.keys(defaultOptions);
 
+module.exports = SeraphCore;
