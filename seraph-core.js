@@ -73,7 +73,7 @@ function SeraphCore(options) {
         if (err) throw err;
       }
     }
-    var authString = new Buffer(options.user + ':' + options.pass).toString('base64');
+    var authString = options.authString || (options.authString = new Buffer(options.user + ':' + options.pass).toString('base64'));
     var endpoint = operation.endpoint || options.endpoint;
     var requestOpts = {
       uri: options.server + endpoint + '/' + operation.to,
@@ -83,7 +83,10 @@ function SeraphCore(options) {
         Authorization: 'Basic ' + authString
       }
     };
-    
+
+    if (options.xstream) requestOpts.headers['X-Stream'] = true;
+
+    if (options.agent) requestOpts.agent = options.agent;
 
     if (operation.body) requestOpts.json = operation.body;
 
