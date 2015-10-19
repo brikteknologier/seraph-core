@@ -88,6 +88,14 @@ function SeraphCore(options) {
 
     if (options.agent) requestOpts.agent = options.agent;
 
+    if (options.ssl)
+    {
+      requestOpts.cert = options.ssl.cert;
+      requestOpts.key = options.ssl.key;
+      requestOpts.passphrase = options.ssl.passphrase;
+      requestOpts.ca = options.ssl.ca;
+    }
+
     if (operation.body) requestOpts.json = operation.body;
 
     callback = callback.bind(this);
