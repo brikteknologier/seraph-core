@@ -167,6 +167,7 @@ function SeraphCore(options) {
     self.call(op, function(err, result) {
       if (err) return callback(err);
       options.pass = newPassword;
+      delete options.authString;
       callback();
     });
   };
