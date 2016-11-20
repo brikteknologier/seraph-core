@@ -94,6 +94,7 @@ function SeraphCore(options) {
       requestOpts.key = options.ssl.key;
       requestOpts.passphrase = options.ssl.passphrase;
       requestOpts.ca = options.ssl.ca;
+      requestOpts.pfx = options.ssl.pfx;
     }
 
     if (operation.body) requestOpts.json = operation.body;
